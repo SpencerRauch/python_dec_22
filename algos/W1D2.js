@@ -45,3 +45,14 @@ function reverseString(str){
       }
   return newstr;
 }
+
+function reverseString2(str) {
+  var len = str.length;
+  var tempStr = str.split("");
+  var revStr = [];
+  
+  for (var i=0; i<len; i++){
+      revStr.push(tempStr.pop());
+  }
+  return revStr.join();
+}
