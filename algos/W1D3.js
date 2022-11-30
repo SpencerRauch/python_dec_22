@@ -175,4 +175,22 @@ function join(arr, separator) {
           return newArr
   }
 
+  function acronymize(str) {
+    var caps = true;
+    var acrStr = "";
+    for (let char of str){
+        // console.log(char + " " + caps);
+        if (char == " "){ //Turn the switch ON to capitalize the next non-space character and add to acrStr
+            caps = true;
+        } else{
+            if (caps){
+                // acrStr += char;
+                acrStr += char.toUpperCase();
+                caps = false;
+            }
+        }
+    }
+    return acrStr;
+}
+
 
