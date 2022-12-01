@@ -151,7 +151,7 @@ function encodeStr(str) {
       while (str[i + 1] === currChar) {
         dupeCount++;
         i++;
-      }
+      }e
   
       if (dupeCount === 1) {
         encoded += currChar
