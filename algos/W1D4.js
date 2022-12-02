@@ -247,3 +247,26 @@ function encodeStr(str) {
     // Since we end with a number concat above doesn't happen for the last one.
     return decoded + letter.repeat(numStr);
   }
+
+  //from Arrti Chandrasekar
+
+  function decodeStr(str) {
+    var decStr="";
+    var letter = "";
+    var num = "";
+
+    var len = str.length;
+
+    //
+    for (var i = 0; i <= len; i++) {
+        if (!isNaN(str[i])) { //if number
+            num += str[i];
+        } else {
+            decStr += letter.repeat(num == ""? 1 : parseInt(num));
+            letter = str[i];
+            num = "";
+        }
+    }
+
+    return decStr;
+}
