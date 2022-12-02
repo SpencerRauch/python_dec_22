@@ -16,7 +16,7 @@
     {% for i in range(times)%}
     <p>{{ name }}</p>
     {% if i == 2 %} <p>This is the third time I said {{name}} </p>
-    <img src="{{ url_for('static', filename='cake.jpg') }}">
+    <img src="{{ url_for('static', filename='img/cake.jpg') }}" alt="cake">
     {%endif%} 
 
     {%endfor%}
