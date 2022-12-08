@@ -19,7 +19,7 @@ const expected3 = "ldHello Wor";
 const rotateAmnt4 = 4;
 const expected4 = "orldHello W";
 
-const rotateAmnt5 = 13; 
+const rotateAmnt5 = 13;
 const expected5 = "ldHello Wor";
 /* 
 Explanation: this is 2 more than the length so it ends up being the same
@@ -79,9 +79,126 @@ const expectedC = false;
  * @returns {boolean} Whether the second string is a rotated version of the 1st.
  */
 function isRotation(s1, s2) {
-//Your code here
+    //Your code here
 }
 
 console.log(isRotation(strA1, strA2)); // expected: true
 console.log(isRotation(strB1, strB2)); // expected: false
 console.log(isRotation(strC1, strC2)); // expected: false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function rotateStr(str, amnt) {
+    let amnt = amnt % str.length;
+    if (amnt == 0) return str;
+    let charsToFront = "";
+    let theRest = "";
+    for (let i = str.length - amnt; i < str.length; i++) {
+        charsToFront += str[i];
+    }
+    for (let i = 0; i < str.length - amnt; i++) {
+        theRest += str[i];
+    }
+    return charsToFront + theRest;
+
+}
+
+
+
+
+function rotateStr(str, amnt) {
+    var temp = ""
+    var newStr = ""
+    amnt = amnt % str.length
+    for (var i = 0; i < str.length; i++) {
+        if (i <= str.length - 1 - amnt) {
+            temp += str[i]
+        } else {
+            newStr += str[i]
+        }
+    }
+    newStr += temp
+    return newStr
+}
+
+
+
+
+function isRotation(s1, s2) {
+    if (s1.length != s2.length) return false;
+    for (let i = 0; i < s1.length; i++) {
+        if (s1 == rotateStr(s2, i)) return true;
+    }
+    return false;
+
+}
+
+function isRotation2(s1, s2) {
+    if (s1.length != s2.length) return false;
+    let combined = s1 + s1;
+    return combined.includes(s2);
+}
+
+
+function rotateStr(str, amnt) {
+    var len = str.length;
+    amnt %= len;
+    // amnt = amnt % len;
+    strArr = str.split("");
+    var tempStr ="";
+    // const str = "Hello World";
+    for (var i=1; i <= amnt; i++){ // 1 to 4
+        tempStr = strArr.pop() + tempStr; //tempStr =orld
+    }
+    return tempStr+strArr.join("");
+}
+
+
+function isRotation(s1, s2) {
+    var len1 = s1.length;
+    var len2 = s2.length;
+
+    if (len1 != len2){
+        return false;
+    }
+
+    for (var i=1; i<len1; i++){
+        // console.log(rotateStr(s2, i));
+        if (s1 == rotateStr(s2, i)) {
+            return true;
+        }
+    }
+    return false;
+}
