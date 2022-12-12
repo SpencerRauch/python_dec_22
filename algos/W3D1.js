@@ -43,15 +43,15 @@ console.log(socialDistancingEnforcer(queue4)) // true
   
   Return -1 if none exist.
   
-*/
-            // 0   1  2  3  4
+*/ //[4,1,0,5]
+// 0   1  2  3  4
 const numsA = [-2, 5, 7, 0, 3];
 const expectedA = 2;
 
 const numsB = [9, 9];
 const expectedB = -1;
 
-const numsC = [1,1,1,1,1,9,1,1,1,1,1]
+const numsC = [1, 1, 1, 1, 1, 9, 1, 1, 1, 1, 1]
 const expectedC = 5
 
 
@@ -74,3 +74,100 @@ console.log(balanceIndex(numsC)) // 5
 
 
 
+
+
+
+
+
+
+
+function balanceIndex(nums) {
+    if (nums.length < 3) {
+        return -1;
+    }
+
+    let left = nums[0];
+    let right = 0;
+
+    for (let i = 2; i < nums.length; i++) {
+        right += nums[i];
+    }
+
+    for (let i = 1; i < nums.length - 1; i++) {
+        if (left === right) {
+            return i;
+        }
+        right -= nums[i + 1];
+        left += nums[i];
+    }
+    return -1;
+}
+
+
+function socialDistancingEnforcer(queue) {
+    let distance = 0;
+    let firstPersonSeen = false;
+    for (let i = 0; i < queue.length; i++) {
+        if (queue[i] === 0) {
+            distance += 1;
+        } else {
+            if (firstPersonSeen && distance < 6) {
+                return false;
+            }
+            firstPersonSeen = true;
+            distance = 0;
+        }
+    }
+    return true;
+}
+
+function balanceIndex(nums) {
+    if (nums.length < 3) {
+        return -1;
+    }
+    for (var i = 1; i < nums.length - 1; i++) {
+        var sumBefore = 0;
+        var sumAfter = 0;
+        for (var j = 0; j < nums.length; j++) {
+            if (j < i) {
+                sumBefore += nums[j]
+            }
+            if (j > i) {
+                sumAfter += nums[j]
+            }
+        }
+        if (sumBefore == sumAfter) {
+            return i;
+        }
+
+    }
+    return -1;
+}
+
+function balanceIndex(nums) {
+    var len = nums.length;
+    if (len < 3) {
+        return -1;
+    }
+
+    var leftSum = 0;
+    var rightSum = 0;
+    var sum = 0;
+
+    for (var i = 0; i < len; i++) {
+        sum += nums[i];
+    }
+
+    for (var i = 0; i < len; i++) {
+        rightSum = sum - leftSum - nums[i];
+
+        // console.log("i: " + i + " Left: " + leftSum + " Right: " + rightSum);
+
+        if (leftSum == rightSum) {
+            return i;
+        }
+        leftSum += nums[i];
+    }
+
+    return -1;
+}
