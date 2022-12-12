@@ -171,3 +171,33 @@ function balanceIndex(nums) {
 
     return -1;
 }
+
+function balanceIndex(nums) {
+
+
+    for (let i = 0; i < nums.length; i++) {
+        let leftSum = 0;
+        let rightSum = 0;
+
+        // Sum the elements to the left of the current index
+        for (let j = 0; j < i; j++) {
+            leftSum += nums[j];
+        }
+
+        // Sum the elements to the right of the current index
+        for (let k = i + 1; k < nums.length; k++) {
+            rightSum += nums[k];
+        }
+
+        // Check if the sums are equal
+        if (leftSum === rightSum) {
+            return i;
+        }
+    }
+
+    // No balance index was found
+    return -1;
+
+
+
+} 
