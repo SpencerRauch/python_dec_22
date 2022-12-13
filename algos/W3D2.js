@@ -82,3 +82,26 @@ function countAdjacentDupes(arr, idx) {
     return count;
 
 }
+
+
+function countOccurrences(sortedNums, index){
+    var cnt = 1;
+    var searchNum = sortedNums[index];
+    var flag = false;
+
+    for (var i=1; i <sortedNums.length/2; i++){
+        flag = false;
+        if (sortedNums[index + i] == searchNum){
+            cnt++;
+            flag = true;
+        }
+        if (sortedNums[index - i] == searchNum){
+            cnt++;
+            flag = true;
+        }
+
+        if (!flag) {
+            return cnt;
+        }
+    }
+}
