@@ -75,3 +75,59 @@ console.log(interleaveArrays(arrA4, arrB4)); // [42, 0, 6];
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function dedupeSorted(sortedNums) {
+    if (sortedNums.length <= 1) {
+        return sortedNums;
+    }
+    const dedupedArr = [];
+
+    for (let i = 0; i < sortedNums.length; i++) {
+        // This only works because it's sorted.
+        if (sortedNums[i] !== dedupedArr[dedupedArr.length - 1]) {
+            dedupedArr.push(sortedNums[i]);
+        }
+    }
+    return dedupedArr;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function interleaveArrays(arr1, arr2) {
+    let length = arr1.length > arr2.length ? arr1.length : arr2.length
+    //                expression           ?  if true    : if false
+
+    let combined = []
+
+    for (let i = 0; i < length; i++){
+        if (arr1[i] !== undefined) combined.push(arr1[i])
+        if (arr2[i] !== undefined) combined.push(arr2[i])
+    }
+    return combined
+}
+
