@@ -57,14 +57,14 @@ const expectedB = 1;
 const numC = 25;
 const expectedC = 7;
 
-const numD = 999999999;// 9+9+9 = 27, 2 + 7 = 9
+const numD = 999;// 9+9+9 = 27, 2 + 7 = 9
 const expectedD = 9;
 /**
  * Sums the given number's digits until the number becomes one digit.
  * @param {number} num The number to sum to one digit.
  * @returns {number} One digit.
  */
- function sumToOneDigit(num){
+function sumToOneDigit(num) {
     //your code here
     //base case?
     //logic?
@@ -76,3 +76,75 @@ console.log(sumToOneDigit(numB)) // 1
 console.log(sumToOneDigit(numC)) // 7
 console.log(sumToOneDigit(numD)) // 9
 /*****************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function factorial(n) {
+    n = Math.floor(n)
+    if (n <= 0) {
+        return 1
+    }
+    return n * factorial(n - 1)
+}
+
+
+
+
+function sumToOneDigit(num) {
+    //Your code here
+    //Base case?
+    if (num < 10) {
+        return num
+    }
+    // Logic ?
+    let sum = 0
+    while (num > 0) {
+        sum += num % 10
+        num = Math.floor(num / 10)
+    }
+    // Recursive call / return
+    return sumToOneDigit(sum)
+}
+
+function sumToOneDigit(num) {
+    num = num.toString()
+    var result = 0
+    for (var i = 0; i < num.length; i++) {
+        result += parseInt(num[i])
+    }
+    if (result < 10) return result
+    return sumToOneDigit(result)
+}
+
+
+function sumToOneDigit(num) {
+    if (num == 0) return 0
+    if (num % 9 == 0) return 9
+    return num % 9
+}
+
+
+
